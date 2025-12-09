@@ -1,0 +1,20 @@
+{
+  "name": "fullstack-journey",
+  "version": "1.0.0",
+  "description": "fullstack-journey",
+  "homepage": "https://github.com/Gobler-code/Fullstack-learning-journey#readme",
+  "bugs": {
+    "url": "https://github.com/Gobler-code/Fullstack-learning-journey/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gobler-code/Fullstack-learning-journey.git"
+  },
+  "license": "MIT",
+  "author": "Uparjan Gautam",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
