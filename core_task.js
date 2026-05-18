@@ -1,38 +1,20 @@
 const fs = require('fs');
 const path = require('path');
+  
 
-const folderName = 'user_data';
-const fileName = 'profile.txt';
+const filepath = path.join(__dirname,'learning.txt');
 
-const fullPath = path.join(folderName,fileName);
-console.log('Task 1 result(Joined path):', fullPath);
-
-const inputPath = 'user/admin/data/config.json';
-const directoryOnly = path.dirname(inputPath);
-console.log('Task 2 Result (Directory Name):', directoryOnly);
-
-const content = "This data was written asynchronously.";
-
-fs.writeFile('output.txt', content, (err) => {
-    if(err)
-    {
-        console.log('Task 3 error:', err);
-        return;
+fs.writeFile(filepath, 'I am mastering the Event loop', (err) => {
+    if (err) {
+        console.error('Error writing to file:', err);
+    } else {
+        console.log('writing finished');
+        
+        fs.readFile(filepath, 'utf-8',(err, data)=>{
+    if(err) return console.log(err);
+    console.log("read complete :",data);
+}  )
     }
-    else{
-        console.log('Task 3 Result:', 'File write complete!');
-
-    }
-
-
-
-try{
-    const fileContent = fs.readFileSync('output.txt', 'utf-8');
-    console.log('Task 4 Result (synchronous read content):', fileContent);
-}
-catch(error)
-{
-    console.error('Task 4 Error reading file synchrounously:',error.message);
-
-}
 });
+
+
