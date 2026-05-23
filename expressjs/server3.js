@@ -12,16 +12,30 @@ app.get('/api/notes',(req,res)=>{
 })
 app.get('/api/notes/:id',(req,res)=>{
     const singleNote = notes.find((note)=> note.id === Number(req.params.id))
+if(!singleNote){
+    res.status(404).json({message:"Required note doesnot exist"});
+    return;
+}
     res.json(singleNote);
 }) 
 app.post('/api/notes',(req,res)=>{
    
     const allNote = req.body;
+    if(!req.body.title  || !req.body.content){
+        res.status(400).json({message:'Please enter valid response'});
+        return;
+    }
+    allNote.id = Date.now()
+     notes.push(allNote);
     res.json({message:"Note recieved",notes:allNote});
 })
 
 app.put('/api/notes/:id',(req,res)=>{
      const oldNote = notes.find((note)=> note.id === Number(req.params.id))
+     if(!oldNote){
+        res.status(404).json({message:"Required note doesnot exist"});
+        return;
+     }
       oldNote.title = req.body.title;
       oldNote.content = req.body.content;
       res.json({message:"Updated notes",notes:oldNote});
