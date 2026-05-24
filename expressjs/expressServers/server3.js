@@ -43,7 +43,13 @@ app.put('/api/notes/:id',(req,res)=>{
 })
 
 app.delete('/api/notes/:id',(req,res)=>{
+     const noteToDelete = notes.find((note)=> note.id === Number(req.params.id))
+     if(!noteToDelete){
+        res.status(404).json({message:"Required note doesnot exist"});
+        return;
+     }
       notes = notes.filter((note)=> note.id != Number(req.params.id))
+      
       res.json({message:"note deleted",notes:notes});
 
 })
