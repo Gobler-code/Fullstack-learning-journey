@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const connectDB = require('./config/db');
+const authRoutes = require('./routes/authRoutes');
 const noteRoutes = require('./routes/noteRoutes');
 const errorHandler = require('./middleware/errorMiddleware');
 
@@ -9,6 +10,7 @@ const app = express();
 app.use(express.json());
 
 // routes
+app.use('/api/auth',  authRoutes);
 app.use('/api/notes', noteRoutes);
 
 // error handler - always last
